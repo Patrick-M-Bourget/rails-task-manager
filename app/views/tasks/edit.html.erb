@@ -1,25 +1,22 @@
 <div class="container">
   <h1 style="padding: 10px;">Edit task</h1>
 
-  <div class="form-group" style="padding:10px;">
-    <form action="/tasks" method="post">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-
+  <div class="form" style="padding: 10px;">
+    <%= form_for(@task) do |f| %>
       <div class="form-group">
-        <label for="form-task-title">Task title: </label>
-        <input type="text" name="task[title]" class="form-control" id="title" required></textarea>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <label for="form-task-details">Details: </label>
-        <input type="text" name="task[details]" class="form-control" id="details"></textarea>
+        <%= f.label :details %>
+        <%= f.text_field :details, class: 'form-control' %>
       </div>
 
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary">
-      </div>
-    </form>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
   </div>
+
   <div class="container">
     <%= link_to "Back to list", tasks_path %>
   </div>
