@@ -1,13 +1,16 @@
 <div class="container">
-  <h1 style="padding: 10px;"><%= @tasks.title %></h1>
+  <h1 style="padding: 10px;"><%= @task.title %></h1>
+
     <div class="task-card">
-      <h3><%= @tasks.details %></h3>
+      <h3><%= @task.details %></h3>
       <p id="task-title">
-        <% if @tasks.completed == true %>
-          <input type="checkbox" name="task-completed" value="completed" checked> This task is completed
-       <% else %>
-          <input type="checkbox" name="task-completed" value="completed"> This task is completed
-        <% end %>
+        <input type="checkbox" name="task-completed" value="completed" <%= "checked" if @task.completed %>> Task complete
+      </p>
+
+      <p><%= link_to "Edit", edit_path(@task)%>
+      <%= link_to "Delete", destroy_path(@task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
       </p>
     </div>
   <div class="container">
